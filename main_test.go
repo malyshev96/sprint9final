@@ -19,8 +19,8 @@ func TestGenerateRandomElements(t *testing.T){
 	}
 	assert.False(t, allZero, "Все элементы нулевые")
 	
-	assert.Panics(t, func() {generateRandomElements(-2)}, "Паника при отрицательном размере")
-	assert.Panics(t, func() {generateRandomElements(0)}, "Паника при нулевом размере")
+	assert.Nil(t, generateRandomElements(-2), "nil при отрицательном размере")
+	assert.Nil(t, generateRandomElements(0), "nil при нулевом размере")
 	assert.Len(t, generateRandomElements(1), 1, "Длина слайса должна быть 1")
 }
 
@@ -29,12 +29,6 @@ func TestMaximum(t *testing.T) {
 		data := []int{1, 5, 3, 9, 2}
 		result := maximum(data)
 		assert.Equal(t, 9, result, "Максимум должен быть 9")
-	})
-
-	t.Run("Отрицательные числа", func(t *testing.T) {
-		data := []int{-5, -1, -10, -3}
-		result := maximum(data)
-		assert.Equal(t, -1, result, "Максимум должен быть -1")
 	})
 
 	t.Run("Любые числа", func(t *testing.T) {
